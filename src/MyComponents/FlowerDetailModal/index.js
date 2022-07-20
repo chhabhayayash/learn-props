@@ -1,6 +1,6 @@
 import React from "react";
 import {Modal } from "antd";
-import "./FlowerDetailModal.css";
+import "./FlowerDetailModal.scss";
 
 const modal = (props) => {
   return (
@@ -9,9 +9,9 @@ const modal = (props) => {
       visible={props.isModalVisible}
       onCancel={props.handleCancel}
       footer={null}
-      className="modal"
+      className="flower-detail-modal"
     >
-      <div className="cards ">
+      <div className="cards">
         <img src={props.data.img} alt="Rose" className="imgs" />
         <p className="modal-text">&emsp;&emsp;{props.data.text}</p>
       </div>

@@ -1,7 +1,8 @@
-import React from "react";
-import { Col, Row } from "antd";
+import React, { useState } from "react";
+import { Button, Col, Row, Modal, Input, Form } from "antd";
 import Flowers from "../../MyComponents/Flower";
-import './Home.css'
+import "./Home.scss";
+import AddFlowerModal from "../../MyComponents/AddFlowerModal";
 // import FlowersData from "../../MyComponents/FlowersData";
 // import FlowersDetailModal from "../../MyComponents/FlowerDetailModal";
 
@@ -32,21 +33,30 @@ const FlowersData = [
   },
 ];
 
+/* eslint-disable no-template-curly-in-string */
 const Home = () => {
-  // const data={[{title=values.title},{img=values.img}]}
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <div className="main" >
-      <Row gutter={[20, 20]} className="home">
-      {FlowersData.map((values) => {
-        console.log(values);
-        return (
-          <Col className="gutter-row" span={8}>
-            {/* <Flowers title={values.title} img={values.img} text={values.text} /> */}
-            <Flowers data={values} />
-          </Col>
-        );
-      })}
-    </Row>
+    <div className="home">
+      <Button
+        type="primary"
+        onClick={() => {
+          setIsModalVisible(true);
+        }}
+      >
+        Add Flower
+      </Button>
+      <Row gutter={[20, 20]} className="flower-list-container">
+        {FlowersData.map((values) => {
+          console.log(values);
+          return (
+            <Col className="gutter-row" span={8}>
+              <Flowers data={values} />
+            </Col>
+          );
+        })}
+      </Row>
+      <AddFlowerModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
     </div>
   );
 };

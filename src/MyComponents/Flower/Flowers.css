@@ -21,21 +21,8 @@
   margin-bottom: 0px !important;
 }
 
-.ant-modal-body {
-  padding: 0px !important;
-}
-.ant-modal-title {
-  font-weight: bolder !important;
-  font-size: xx-large !important;
-  color: white !important;
-}
-.ant-modal-close-x {
-  color: white;
-}
-.ant-modal-header {
-  background-color: black !important;
-}
+
 .imgs {
-  width: 100% ;
+  width: 100% !;
 }
 
