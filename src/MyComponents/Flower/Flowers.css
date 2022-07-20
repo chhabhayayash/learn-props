@@ -11,6 +11,7 @@
   text-align: right;
   width: fit-content;
   padding: 20px;
+  /* margin: 10px; */
 }
 .title {
   color: white;
@@ -35,6 +36,6 @@
   background-color: black !important;
 }
 .imgs {
-  width: 100%;
+  width: 100% ;
 }
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Col, Row } from "antd";
 import Flowers from "../../MyComponents/Flower";
+import './Home.css'
 // import FlowersData from "../../MyComponents/FlowersData";
 // import FlowersDetailModal from "../../MyComponents/FlowerDetailModal";
 
@@ -31,10 +32,11 @@ const FlowersData = [
   },
 ];
 
-const index = () => {
+const Home = () => {
   // const data={[{title=values.title},{img=values.img}]}
   return (
-    <Row gutter={[24, 24]}>
+    <div className="main" >
+      <Row gutter={[20, 20]} className="home">
       {FlowersData.map((values) => {
         console.log(values);
         return (
@@ -45,7 +47,8 @@ const index = () => {
         );
       })}
     </Row>
+    </div>
   );
 };
 
-export default index;
+export default Home;
