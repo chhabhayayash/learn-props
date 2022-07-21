@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Row, Modal, Input, Form } from "antd";
+import { Button, Col, Row} from "antd";
 import Flowers from "../../MyComponents/Flower";
 import "./Home.scss";
 import AddFlowerModal from "../../MyComponents/AddFlowerModal";
@@ -37,27 +37,37 @@ const FlowersData = [
 const Home = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <div className="home">
-      <Button
-        type="primary"
-        onClick={() => {
-          setIsModalVisible(true);
-        }}
-      >
-        Add Flower
-      </Button>
-      <Row gutter={[20, 20]} className="flower-list-container">
-        {FlowersData.map((values) => {
-          console.log(values);
-          return (
-            <Col className="gutter-row" span={8}>
-              <Flowers data={values} />
-            </Col>
-          );
-        })}
-      </Row>
-      <AddFlowerModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
-    </div>
+    <>
+      <div className="home">
+        <div className="button-row" >
+          <Button
+            size={"large"}
+            type="primary"
+            onClick={() => {
+              setIsModalVisible(true);
+            }}
+            className="addflower-btn"
+          >
+            Add Flower
+          </Button>
+        </div>
+
+        <Row gutter={[24, 24]} className="flower-list-container">
+          {FlowersData.map((values) => {
+            console.log(values);
+            return (
+              <Col className="gutter-row" span={8}>
+                <Flowers data={values} />
+              </Col>
+            );
+          })}
+        </Row>
+        <AddFlowerModal
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      </div>
+    </>
   );
 };
 

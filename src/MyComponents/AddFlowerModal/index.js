@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Col, Row, Modal, Input, Form } from "antd";
+import { Button, Modal, Input, Form } from "antd";
 import "./AddFlowerModal.scss";
 
 const layout = {
@@ -16,6 +16,7 @@ const AddFlowerModal = (props) => {
       className="add-flower-modal"
       title="Add Flower"
       visible={props.isModalVisible}
+      footer={null}
       onOk={() => {
         props.setIsModalVisible(false);
       }}
@@ -42,8 +43,8 @@ const AddFlowerModal = (props) => {
         <Form.Item name={["user", "text"]} label="Text">
           <Input.TextArea />
         </Form.Item>
-        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <Button type="primary" htmlType="submit">
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }} className='submit-btn'>
+          <Button type="primary" htmlType="submit" size={"large"}>
             Submit
           </Button>
         </Form.Item>

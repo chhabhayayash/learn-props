@@ -1,7 +1,15 @@
 .home {
- 
+  .button-row {
+    margin: 20px 60px;
+    display: flex;
+    justify-content: end;
+    padding: 12px;
+
+    
+  }
   .flower-list-container {
     margin: 60px !important;
     padding-bottom: 60px !important;
+    margin-top: 0px !important;
   }
 }

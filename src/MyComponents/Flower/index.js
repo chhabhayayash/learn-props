@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Flowers.css";
+import "./Flowers.scss";
 import { Button } from "antd";
 import FlowersDetailModal from "../FlowerDetailModal";
 const Flowers = (props) => {
