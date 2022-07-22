@@ -6,7 +6,7 @@ import AddFlowerModal from "../../MyComponents/AddFlowerModal";
 // import FlowersData from "../../MyComponents/FlowersData";
 // import FlowersDetailModal from "../../MyComponents/FlowerDetailModal";
 
-const FlowersData = [
+const List = [
   {
     id: 1,
     img: "https://static8.depositphotos.com/1016860/967/i/600/depositphotos_9677015-stock-photo-beautiful-landscape-with-sunflower-field.jpg",
@@ -34,8 +34,22 @@ const FlowersData = [
 ];
 
 /* eslint-disable no-template-curly-in-string */
-const Home = () => {
+const Home = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [flowersData,setFlowersData]= useState(List);
+
+  const onSubmit = (value)=>{
+      
+    let obj = value;
+    obj.id = flowersData.length+1;
+console.log("value   --",obj);
+setFlowersData([...flowersData,obj])
+
+setIsModalVisible(false)  
+
+
+  }
+  
   return (
     <>
       <div className="home">
@@ -53,7 +67,7 @@ const Home = () => {
         </div>
 
         <Row gutter={[24, 24]} className="flower-list-container">
-          {FlowersData.map((values) => {
+          {flowersData.map((values) => {
             console.log(values);
             return (
               <Col className="gutter-row" span={8}>
@@ -63,8 +77,9 @@ const Home = () => {
           })}
         </Row>
         <AddFlowerModal
-          isModalVisible={isModalVisible}
-          setIsModalVisible={setIsModalVisible}
+          isVisible={isModalVisible}
+          closeModal={()=> setIsModalVisible(false)}
+          onSubmit ={onSubmit}
         />
       </div>
     </>

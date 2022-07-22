@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Modal, Input, Form } from "antd";
 import "./AddFlowerModal.scss";
+import Home from "../../pages/Home";
 
 const layout = {
   labelCol: {
@@ -11,45 +12,56 @@ const layout = {
   },
 };
 const AddFlowerModal = (props) => {
-  return (
-    <Modal
-      className="add-flower-modal"
-      title="Add Flower"
-      visible={props.isModalVisible}
-      footer={null}
-      onOk={() => {
-        props.setIsModalVisible(false);
-      }}
-      onCancel={() => {
-        props.setIsModalVisible(false);
-      }}
-    >
-      <Form {...layout}>
-        <Form.Item
-          name={["user", "name"]}
-          label="Name"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+  const [form] = Form.useForm();
+  const handleFormOnSubmit = (values) => {
+    console.log('form--->',form);
+    props.onSubmit(values);
+    form.resetFields();
+   
+  };
 
-        <Form.Item name={["user", "img"]} label="Img">
-          <Input />
-        </Form.Item>
-        <Form.Item name={["user", "text"]} label="Text">
-          <Input.TextArea />
-        </Form.Item>
-        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 10 }} className='submit-btn'>
-          <Button type="primary" htmlType="submit" size={"large"}>
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
-    </Modal>
+  return (
+    <>
+      <Modal
+        className="add-flower-modal"
+        title="Add Flower"
+        visible={props.isVisible}
+        footer={null}
+        onCancel={() => {
+          form.resetFields();
+          props.closeModal();
+        }}
+      >
+        <Form {...layout} onFinish={handleFormOnSubmit}  form={form}>
+          <Form.Item
+            name={"title"}
+            label="Name"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item name={"img"} label="Img">
+            <Input />
+          </Form.Item>
+          <Form.Item name={"text"} label="Text">
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item
+            wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
+            className="submit-btn"
+          >
+            <Button type="primary" htmlType="submit" size={"large"}>
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Modal>
+    </>
   );
 };
 
