@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Flowers.scss";
 import { Button } from "antd";
 import FlowersDetailModal from "../FlowerDetailModal";
-import { EditTwoTone ,DeleteTwoTone } from "@ant-design/icons";
+import { EditTwoTone, DeleteTwoTone } from "@ant-design/icons";
 
 const Flowers = (props) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -11,25 +11,23 @@ const Flowers = (props) => {
   return (
     <>
       <div className="cards">
-        <h2 className="title">
-          {props.data.title}
-          <Button
-            type="danger"
-            shape="circle"
-            icon={<DeleteTwoTone twoToneColor="white"/>}
-            size={"large"}
-            className="delete-btn"
-          />
-        </h2>
+        <h2 className="title">{props.data.title}</h2>
+        <Button
+          type="danger"
+          shape="circle"
+          icon={<DeleteTwoTone twoToneColor="white" />}
+          size={"large"}
+          className="delete-btn"
+        />
 
         <img src={props.data.img} alt="Rose" className="imgs" />
         <Button
-              type="primary"
-              shape="circle"
-              icon={<EditTwoTone twoToneColor="white"/>}
-              size={"large"}
-              className='edit-btn'
-            />
+          type="primary"
+          shape="circle"
+          icon={<EditTwoTone twoToneColor="white" />}
+          size={"large"}
+          className="edit-btn"
+        />
         <Button
           className="read-more-btn"
           type="primary"
